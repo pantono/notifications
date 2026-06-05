@@ -1,0 +1,2 @@
+GenerateVapidKeys:
+  class: Pantono\Notifications\Command\GenerateVapidKeys
