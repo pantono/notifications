@@ -9,7 +9,7 @@ final class WebPushMigration extends BasePantonoMigration
     public function change(): void
     {
         $this->table('web_push_subscription')
-            ->addLinkedColumn('user_id', 'user', 'id', ['null' => true])
+            ->addLinkedColumn('user_id', 'user', 'id', ['null' => true, 'signed' => false])
             ->addColumn('endpoint', 'text')
             ->addColumn('endpoint_hash', 'string', ['limit' => 64])
             ->addColumn('public_key', 'text')
@@ -22,7 +22,7 @@ final class WebPushMigration extends BasePantonoMigration
             ->create();
 
         $this->table('web_push_notification')
-            ->addLinkedColumn('subscription_id', 'web_push_subscription', 'id')
+            ->addLinkedColumn('subscription_id', 'web_push_subscription', 'id', ['signed' => false])
             ->addColumn('date_created', 'datetime')
             ->addColumn('date_sent', 'datetime', ['null' => true])
             ->addColumn('title', 'string')
