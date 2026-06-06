@@ -9,6 +9,11 @@ use Symfony\Component\Console\Command\Command;
 
 class GenerateVapidKeys extends Command
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this->setName('web-push:generate-vapid-keys');
